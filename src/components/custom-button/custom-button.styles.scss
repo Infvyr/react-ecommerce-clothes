@@ -11,7 +11,7 @@
   text-transform: uppercase;
   font-family: inherit;
   font-weight: bolder;
-  border: none;
+
   cursor: pointer;
   border: 1px solid transparent;
   transition: 
@@ -30,8 +30,15 @@
     color: white;
 
     &:hover {
-      background-color: #357ae8;
-      border: none;
+      background-color: transparent;
+      border-color: #4285f4;
+      color: #4285f4;
     }
   }
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px
+  }
