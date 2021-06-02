@@ -18,6 +18,18 @@
     align-items: center;
     justify-content: flex-end;
 
+    ul{
+      padding: 0;
+      margin: 0;
+      display: inherit;
+      align-items: center;
+    }
+
+    li{
+      display: inherit;
+      list-style-type: none;
+    }
+
     .option {
       padding: 10px 15px;
       cursor: pointer;
