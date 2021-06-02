@@ -13,25 +13,33 @@ const Header = ({ currentUser, hidden }) => (
 		<Link to="/" className="logo-container">
 			<Logo className="logo" />
 		</Link>
-		<div className="options">
-			<Link to="/shop" className="option">
-				SHOP
-			</Link>
-			<Link to="/contact" className="option">
-				CONTACT
-			</Link>
-			{currentUser ? (
-				<div className="option" onClick={() => auth.signOut()}>
-					SIGN OUT
-				</div>
-			) : (
-				<Link to="/signin" className="option">
-					{' '}
-					SIGN IN{' '}
-				</Link>
-			)}
-			<CartIcon />
-		</div>
+		<nav className="options">
+			<ul>
+				<li>
+					<Link to="/shop" className="option">
+						SHOP
+					</Link>
+				</li>
+				<li>
+					<Link to="/contact" className="option">
+						CONTACT
+					</Link>
+				</li>
+				{currentUser ? (
+					<li className="option" onClick={() => auth.signOut()}>
+						SIGN OUT
+					</li>
+				) : (
+					<li>
+						<Link to="/signin" className="option">
+							{' '}
+							SIGN IN{' '}
+						</Link>
+					</li>
+				)}
+				<CartIcon />
+			</ul>
+		</nav>
 		{hidden ? null : <CartDropdown />}
 	</header>
 );
