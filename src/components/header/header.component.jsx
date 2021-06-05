@@ -20,6 +20,11 @@ const Header = ({ currentUser, hidden }) => (
 		<nav className="options">
 			<ul>
 				<li>
+					<Link to="/" className="option">
+						HOME
+					</Link>
+				</li>
+				<li>
 					<Link to="/shop" className="option">
 						SHOP
 					</Link>
