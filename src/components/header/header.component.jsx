@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { auth } from '../../firebase/firebase.utils';
@@ -10,47 +9,46 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import './header.styles.scss';
+import {
+	HeaderContainer,
+	LogoContainer,
+	OptionsContainer,
+	OptionsList,
+	OptionsItem,
+	OptionLink,
+	OptionContainer,
+} from './header.styles';
 
 const Header = ({ currentUser, hidden }) => (
-	<header className="header">
-		<Link to="/" className="logo-container">
+	<HeaderContainer>
+		<LogoContainer to="/">
 			<Logo className="logo" />
-		</Link>
-		<nav className="options">
-			<ul>
-				<li>
-					<Link to="/" className="option">
-						HOME
-					</Link>
-				</li>
-				<li>
-					<Link to="/shop" className="option">
-						SHOP
-					</Link>
-				</li>
-				<li>
-					<Link to="/contact" className="option">
-						CONTACT
-					</Link>
-				</li>
+		</LogoContainer>
+		<OptionsContainer>
+			<OptionsList>
+				<OptionsItem>
+					<OptionLink to="/">HOME</OptionLink>
+				</OptionsItem>
+				<OptionsItem>
+					<OptionLink to="/shop">SHOP</OptionLink>
+				</OptionsItem>
+				<OptionsItem>
+					<OptionLink to="/contact">CONTACT</OptionLink>
+				</OptionsItem>
 				{currentUser ? (
-					<li className="option" onClick={() => auth.signOut()}>
+					<OptionContainer onClick={() => auth.signOut()}>
 						SIGN OUT
-					</li>
+					</OptionContainer>
 				) : (
-					<li>
-						<Link to="/signin" className="option">
-							{' '}
-							SIGN IN{' '}
-						</Link>
-					</li>
+					<OptionsItem>
+						<OptionLink to="/signin">SIGN IN</OptionLink>
+					</OptionsItem>
 				)}
 				<CartIcon />
-			</ul>
-		</nav>
+			</OptionsList>
+		</OptionsContainer>
 		{hidden ? null : <CartDropdown />}
-	</header>
+	</HeaderContainer>
 );
 
 const mapSateToProps = createStructuredSelector({
